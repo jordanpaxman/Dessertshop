@@ -1,0 +1,358 @@
+#:kivy 1.0
+WindowManager:
+    ItemSelection:
+    CandyWindow:
+    CookieWindow:
+    IceCreamWindow:
+    SundaeWindow:
+    CustomerWindow:
+    OrderAgainWindow:
+    ThankYouWindow:
+    
+
+
+<ItemSelection>
+    name: 'itemselection'
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        spacing: 20
+        padding: 40
+            
+        Label: 
+            text: "What would you like to add to the order?"
+            font_size: 45
+
+        Button:
+            text: "Candy"
+            id:candy
+            font_size: 40
+            on_release: 
+                app.root.current = 'candywindow'
+                root.manager.transition.direction = 'left'
+
+        Button:
+            text: "Cookie"
+            id:cookie
+            font_size: 40
+            on_release: 
+                app.root.current = 'cookiewindow'
+                root.manager.transition.direction = 'left'
+        Button:
+            text: "Ice Cream"
+            id:icecream
+            font_size: 40
+            on_release: 
+                app.root.current = 'icecreamwindow'
+                root.manager.transition.direction = 'left'
+        Button:
+            text: "Sundae"
+            id:sundae
+            font_size: 40
+            on_release: 
+                app.root.current = 'sundaewindow'
+                root.manager.transition.direction = 'left'
+        Button:
+            text: "Complete Order"
+            id:complete
+            font_size: 30
+            on_release: 
+                app.root.current = 'customerwindow'
+                root.manager.transition.direction = 'left'
+
+
+<CandyWindow>
+#each dessert window needs to be capable of creating a dessert instance and adding it to an order. 
+    name: "candywindow"
+    dessert: dessert
+    quantity: quantity
+    price: price 
+    GridLayout:
+       
+        
+        cols: 2
+
+        Label: 
+            text: 'Enter Candy Name'
+            font_size: 32
+        TextInput:
+            id: dessert
+            multiline: False
+        Label: 
+            text: 'Enter Candy Weight'
+            font_size: 32
+        TextInput:
+            id: quantity
+            multiline: False
+        Label: 
+            text: 'Enter Price per Pound'
+            font_size: 32
+        TextInput:
+            id: price
+            multiline: False
+
+        Button:
+            text: 'Go Back'
+            font_size: 32
+            on_release: 
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.clear_text()
+        Button:
+            text: 'Add Item'
+            font_size: 32
+            on_release: 
+            #   needs to add item to order
+                root.add_item()
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                
+
+<CookieWindow>
+    name: "cookiewindow"
+    dessert: dessert
+    quantity: quantity
+    price: price 
+    GridLayout:
+        cols: 2
+
+        Label: 
+            text: 'Enter Cookie Name'
+            font_size: 32
+        TextInput:
+            id: dessert
+            multiline: False
+        Label: 
+            text: 'Enter # of Cookies'
+            font_size: 32
+        TextInput:
+            id: quantity
+            multiline: False
+        Label: 
+            text: 'Enter Price per Dozen'
+            font_size: 32
+        TextInput:
+            id: price
+            multiline: False
+
+        Button:
+            text: 'Go Back'
+            font_size: 32
+            on_release: 
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.clear_text()
+
+        Button:
+            text: 'Add Item'
+            font_size: 32
+            on_release: 
+            #   needs to add item to order
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.add_item()
+
+<IceCreamWindow>
+    name: "icecreamwindow"
+    dessert: dessert
+    quantity: quantity
+    price: price 
+    GridLayout:
+        cols: 2
+
+        Label: 
+            text: 'Enter Ice Cream Name'
+            font_size: 32
+        TextInput:
+            id: dessert
+            multiline: False
+        Label: 
+            text: 'Enter # of Scoops'
+            font_size: 32
+        TextInput:
+            id: quantity
+            multiline: False
+        Label: 
+            text: 'Enter Price per Scoop'
+            font_size: 32
+        TextInput:
+            id: price
+            multiline: False
+        
+        Button:
+            text: 'Go Back'
+            font_size: 32
+            on_release: 
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.clear_text()
+        Button:
+            text: 'Add Item'
+            font_size: 32
+            on_release: 
+            #   needs to add item to order
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.add_item()
+
+<SundaeWindow>
+    name: "sundaewindow"
+    dessert: dessert
+    quantity: quantity
+    price: price 
+    topping: topping
+    topping_price: topping_price
+    GridLayout:
+        cols: 2
+
+        Label: 
+            text: 'Enter Sundae Name'
+            font_size: 32
+        TextInput:
+            id: dessert
+            multiline: False
+        Label: 
+            text: 'Enter # of Scoops'
+            font_size: 32
+        TextInput:
+            id: quantity
+            multiline: False
+        Label: 
+            text: 'Enter Price per Scoop'
+            font_size: 32
+        TextInput:
+            id: price
+            multiline: False
+        Label: 
+            text: 'Enter Topping Name'
+            font_size: 32
+        TextInput:
+            id: topping
+            multiline: False
+        Label: 
+            text: 'Enter price of Topping'
+            font_size: 32
+        TextInput:
+            id: topping_price
+            multiline: False
+        
+        Button:
+            text: 'Go Back'
+            font_size: 32
+            on_release: 
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.clear_text()
+        Button:
+            text: 'Add Item'
+            font_size: 32
+            on_release: 
+            #   needs to add item to order
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'right'
+                root.add_item()
+
+<CustomerWindow>
+    name: "customerwindow"
+    customer_name: customer_name
+    cash: cash
+    card: card
+    phone: phone
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 40
+        
+        Label:
+            text: "Enter Customer's Name"
+        
+        TextInput:
+            id: customer_name
+            multiline: False
+            #on enter text input go to payment 
+        Label:
+            text: "Select Payment Type"
+        Button:
+            id: cash
+            text: "Cash"
+            on_release:
+                root.update_pay(cash)
+        Button:
+            id: card
+            text: "Card"
+            on_release: 
+                root.update_pay(card)
+        Button:
+            id: phone
+            text: "Phone"
+            on_release:
+                root.update_pay(phone)
+        Label:
+
+            text: 
+        BoxLayout:
+            padding: 30
+            spacing: 40
+            orientation: 'horizontal'
+        
+            Button:
+                text: 'Go Back'
+                font_size: 32
+                on_release: 
+                    app.root.current = 'itemselection'
+                    root.manager.transition.direction = 'right'
+                    root.clear_text()
+
+            Button:
+                text: 'Complete Order'
+                font_size: 32
+                on_release: 
+                #change to thank you screen and would you like to add another order?
+                    app.root.current = 'orderagain'
+                    root.manager.transition.direction = 'left'
+                    root.check_customer()
+
+<OrderAgainWindow>
+    name: 'orderagain'
+    yes: yes
+    no: no
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: thankyou
+            text: "Thank you! Would you like to add another order?"
+        Button:
+            id: yes
+            text: 'Yes'
+            on_release: 
+                app.root.current = 'itemselection'
+                root.manager.transition.direction = 'left'
+                root.new_order()
+
+        Button:
+            id: no
+            text: 'No'
+            on_release: 
+                app.root.current = 'comeagain'
+                root.print_receipts()
+
+
+<ThankYouWindow>
+    name: 'comeagain'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id:thank you
+            text: "Come Again Soon!"
+            font_size: 60
+                
+            
+        
+        
+                
+
+
+
+
+
+
