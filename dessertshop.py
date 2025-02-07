@@ -190,10 +190,6 @@ def main():
   
   my_order, customer_name = main_menu()
 
-  my_order.add(Candy("Gummy Bears", .25, .35))
-  my_order.add(Candy("Gummy Bears", 1.5, .25))
-  my_order.add(Candy("Candy Corn", 1.75, .25))
-
   freezer.get(chocolate_chip)
   my_order.add(chocolate_chip)
   freezer.get(pistachio_icecream)
